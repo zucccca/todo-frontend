@@ -31,11 +31,43 @@ function App() {
     setTodo("");
   };
 
+  const handleToggle = async (todo) => {
+    const { id, completed } = todo;
+    const url = `http://localhost:3001/todos/${id}`;
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ completed: !completed }),
+    });
+
+    const updatedTodo = await response.json();
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === updatedTodo.id) {
+        return { ...todo, completed: updatedTodo.completed };
+      }
+
+      return todo;
+    });
+
+    setTodos(updatedTodos);
+  };
+
   const renderTodos = () => {
     return (
       <ul>
         {todos.map((todo) => (
-          <li>{todo.title}</li>
+          <li key={todo.id} onClick={() => handleToggle(todo)}>
+            <input type="checkbox" checked={todo.completed} readOnly />
+            <span
+              style={{
+                textDecoration: todo.completed ? "line-through" : "none",
+              }}
+            >
+              {todo.title}
+            </span>
+          </li>
         ))}
       </ul>
     );

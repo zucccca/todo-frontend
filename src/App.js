@@ -54,6 +54,13 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const handleDelete = async (id) => {
+    const url = `http://localhost:3001/todos/${id}`;
+    await fetch(url, { method: "DELETE" });
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   const renderTodos = () => {
     return (
       <ul>
@@ -67,6 +74,14 @@ function App() {
             >
               {todo.title}
             </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(todo.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>

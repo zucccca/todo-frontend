@@ -15,3 +15,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.todo-form {
+}
+
+.todo-input {
+  margin-right: 5px;
+}

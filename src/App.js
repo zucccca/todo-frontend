@@ -91,15 +91,19 @@ function App() {
   return (
     <div className="App">
       {todos.length ? renderTodos() : <h1>Fetching todos...</h1>}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="todo">Add todo</label>
+      <form className="todo-form" onSubmit={handleSubmit}>
+        <label htmlFor="todo" className="todo-input">
+          Add todo:
+        </label>
         <input
           type="text"
           name="todo"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="todo-submit">
+          Add
+        </button>
       </form>
     </div>
   );

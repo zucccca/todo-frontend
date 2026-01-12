@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { FaTrash } from "react-icons/fa";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -63,24 +64,31 @@ function App() {
 
   const renderTodos = () => {
     return (
-      <ul>
+      <ul className="todo-list">
         {todos.map((todo) => (
-          <li key={todo.id} onClick={() => handleToggle(todo)}>
-            <input type="checkbox" checked={todo.completed} readOnly />
-            <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-            >
-              {todo.title}
-            </span>
+          <li
+            className="todo-item"
+            key={todo.id}
+            onClick={() => handleToggle(todo)}
+          >
+            <div className="todo-content">
+              <input type="checkbox" checked={todo.completed} readOnly />
+              <span
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
+                {todo.title}
+              </span>
+            </div>
             <button
+              className="todo-delete"
               onClick={(e) => {
                 e.stopPropagation();
                 handleDelete(todo.id);
               }}
             >
-              Delete
+              🗑️
             </button>
           </li>
         ))}
@@ -90,22 +98,25 @@ function App() {
 
   return (
     <div className="App">
-      {todos.length ? renderTodos() : <h1>Fetching todos...</h1>}
-      <form className="todo-form" onSubmit={handleSubmit}>
-        <label htmlFor="todo" className="todo-input">
-          Add todo:
-        </label>
-        <input
-          type="text"
-          name="todo"
-          value={todo}
-          onChange={(e) => setTodo(e.target.value)}
-          className="todo-input"
-        />
-        <button type="submit" className="todo-submit">
-          Add
-        </button>
-      </form>
+      <div className="todo-container">
+        <h1>My Todos</h1>
+        {todos.length ? renderTodos() : <h1>Fetching todos...</h1>}
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="todo" className="todo-input">
+            Add todo:
+          </label>
+          <input
+            type="text"
+            name="todo"
+            value={todo}
+            onChange={(e) => setTodo(e.target.value)}
+            className="todo-input"
+          />
+          <button type="submit" className="todo-submit">
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

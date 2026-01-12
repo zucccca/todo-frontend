@@ -18,10 +18,63 @@ body {
   justify-content: center;
 }
 
-.todo-form {
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .todo-input {
   margin-right: 5px;
   outline: none;
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  padding: 0;
+}
+
+.todo-item {
+  text-transform: capitalize;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  float: right;
+  padding: 0 5px;
+}
+
+.todo-delete:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+.todo-item:hover {
+  background-color: #f5f5f5;
+}
+
+.todo-item span {
+  margin: 0 5px;
 }

@@ -100,6 +100,7 @@ function App() {
           name="todo"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
+          className="todo-input"
         />
         <button type="submit" className="todo-submit">
           Add

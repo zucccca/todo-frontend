@@ -2,6 +2,8 @@ html,
 body {
   height: 100%;
   margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
 }
 
 #root {
@@ -21,4 +23,5 @@ body {
 
 .todo-input {
   margin-right: 5px;
+  outline: none;
 }

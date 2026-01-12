@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { FaTrash } from "react-icons/fa";
 
 function App() {
   const [todos, setTodos] = useState([]);

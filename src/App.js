@@ -17,7 +17,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "https://todo-api-v4b3.onrender.com";
+    const url = "https://todo-api-v4b3.onrender.com/todos";
     const response = await fetch(url, {
       method: "POST",
       headers: {

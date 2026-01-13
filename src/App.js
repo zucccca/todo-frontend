@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const allTodos = await fetch("http://localhost:3001/todos");
+      const allTodos = await fetch("https://todo-api-v4b3.onrender.com/todos");
       const data = await allTodos.json();
 
       setTodos(data.todos);
@@ -17,7 +17,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:3001/todos";
+    const url = "https://todo-api-v4b3.onrender.com";
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -33,7 +33,7 @@ function App() {
 
   const handleToggle = async (todo) => {
     const { id, completed } = todo;
-    const url = `http://localhost:3001/todos/${id}`;
+    const url = `https://todo-api-v4b3.onrender.com/${id}`;
     const response = await fetch(url, {
       method: "PUT",
       headers: {
@@ -55,7 +55,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    const url = `http://localhost:3001/todos/${id}`;
+    const url = `https://todo-api-v4b3.onrender.com/${id}`;
     await fetch(url, { method: "DELETE" });
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);

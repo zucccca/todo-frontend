@@ -33,7 +33,7 @@ function App() {
 
   const handleToggle = async (todo) => {
     const { id, completed } = todo;
-    const url = `https://todo-api-v4b3.onrender.com/${id}`;
+    const url = `https://todo-api-v4b3.onrender.com/todos/${id}`;
     const response = await fetch(url, {
       method: "PUT",
       headers: {

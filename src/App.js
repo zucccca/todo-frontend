@@ -55,7 +55,7 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    const url = `https://todo-api-v4b3.onrender.com/${id}`;
+    const url = `https://todo-api-v4b3.onrender.com/todos/${id}`;
     await fetch(url, { method: "DELETE" });
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
